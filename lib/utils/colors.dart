@@ -10,3 +10,5 @@ const kHeaderBackgroundColor = Color(0xffFFFFFF);
 const kHeaderTextColor = Color(0xFFC62828);
 
 const kSearchbarColor = Color(0xffFFFFFF);
+
+const kTextColor = Color(0xff212121);

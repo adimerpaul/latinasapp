@@ -31,6 +31,31 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kHeaderBackgroundColor,
+        leading: IconButton(
+          icon: Icon(Icons.menu, color: kHeaderTextColor),
+          onPressed: () {
+            // Navigator.push(context, MaterialPageRoute(builder: (context) => Search()));
+          },
+        ),
+        title: const Text(
+          'Latinas Editores Ltda. ',
+          style: TextStyle(
+            color: kHeaderTextColor,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search, color: kHeaderTextColor),
+            onPressed: () {
+              // Navigator.push(context, MaterialPageRoute(builder: (context) => Search()));
+            },
+          )
+        ],
+      ),
       backgroundColor: kBackgroundColor,
       body: Stack(
         children: [
@@ -40,14 +65,14 @@ class _HomeState extends State<Home> {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
-                    Header(),
+                    // Header(),
                     // TextComponent(texto: 'Categorías',),
                     ListView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: categories.length,
                       itemBuilder: (context, index) {
-                        return TextComponent(texto: categories[index]['name'],);
+                        return TextComponent(categori: categories[index],);
                       },
                     ),
                   ],
