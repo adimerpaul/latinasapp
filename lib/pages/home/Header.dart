@@ -20,6 +20,7 @@ class Header extends StatelessWidget {
                   Icons.menu,
                   color: kHeaderTextColor,
                 ),
+                const SizedBox(width: 10),
                 const Text(
                   'Latinas Editores Ltda. ',
                   style: TextStyle(

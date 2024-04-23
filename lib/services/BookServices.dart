@@ -24,4 +24,13 @@ class BookService{
       return [];
     }
   }
+  Future categories() async {
+    var url = apiURL() + 'books';
+    var response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      return [];
+    }
+  }
 }
