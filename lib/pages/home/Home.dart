@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:latinasapp/pages/home/Header.dart';
 import 'package:latinasapp/pages/home/TextComponent.dart';
 import 'package:latinasapp/services/BookServices.dart';
 
 import '../../utils/colors.dart';
-import 'Search.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 

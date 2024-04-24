@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../services/BookServices.dart';
 import '../../globals.dart' as globals;
+import '../book/BookDetailsScreen.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -71,6 +72,15 @@ class _SearchState extends State<Search> {
                     itemCount: bookAll.length,
                     itemBuilder: (context, index) {
                       return ListTile(
+                        onTap: () {
+                          // Cuando se hace clic en un libro, navega a la pantalla de detalles del libro
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BookDetailsScreen(book: bookAll[index]),
+                            ),
+                          );
+                        },
                         title: Text(
                             bookAll[index]['name'].toString(),
                             style: TextStyle(

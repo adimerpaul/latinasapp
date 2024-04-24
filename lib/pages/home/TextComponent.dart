@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:latinasapp/pages/book/BookDetailsScreen.dart';
 
 import '../../utils/colors.dart';
 import '../../globals.dart' as globals;
@@ -46,63 +47,74 @@ class TextComponent extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: categori['books'].length,
               itemBuilder: (context, index){
-                return Stack(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.all(5),
-                      height: 200,
-                      width: 130,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        image: DecorationImage(
-                          image: NetworkImage(globals.API_BACK + 'uploads/thumbnails/thumb_' + categori['books'][index]['image']),
-                          fit: BoxFit.cover,
-                        ),
-
+                return GestureDetector(
+                  onTap: () {
+                    // Cuando se hace clic en un libro, navega a la pantalla de detalles del libro
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BookDetailsScreen(book: categori['books'][index]),
                       ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      child: Container(
-                        padding: const EdgeInsets.all(5),
+                    );
+                  },
+                  child: Stack(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.all(5),
+                        height: 200,
+                        width: 130,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.black87,
-                              Colors.black45,
-                              Colors.transparent,
-                            ],
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter,
+                          image: DecorationImage(
+                            image: NetworkImage(globals.API_BACK + 'uploads/thumbnails/thumb_' + categori['books'][index]['image']),
+                            fit: BoxFit.cover,
                           ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              categori['books'][index]['name'],
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            // const SizedBox(height: 1),
-                            // Text(
-                            //   categori['books'][index]['author'],
-                            //   style: const TextStyle(
-                            //     color: Colors.white,
-                            //     fontSize: 9,
-                            //   ),
-                            // ),
-                          ],
+                  
                         ),
                       ),
-                    ),
-                  ],
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            gradient: LinearGradient(
+                              colors: [
+                                Colors.black87,
+                                Colors.black45,
+                                Colors.transparent,
+                              ],
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter,
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                categori['books'][index]['name'],
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              // const SizedBox(height: 1),
+                              // Text(
+                              //   categori['books'][index]['author'],
+                              //   style: const TextStyle(
+                              //     color: Colors.white,
+                              //     fontSize: 9,
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 );
               },
             ),

@@ -15,7 +15,7 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  var index_color = 1;
+  var index_color = 0;
 
   List pages = [
     Home(),
@@ -70,7 +70,7 @@ class _MenuState extends State<Menu> {
               });
             },
             child: Icon(
-              Icons.notifications,
+              Icons.shopping_cart,
               color: index_color == 4 ? kTitleTextColorActive : kTitleTextColor,
             ),
             backgroundColor: kButtonColor,
@@ -145,12 +145,12 @@ class _MenuState extends State<Menu> {
                 // mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(
-                    index_color == 2 ? Icons.shopping_cart : Icons.shopping_cart_outlined,
+                    index_color == 2 ? Icons.history : Icons.history_outlined,
                     color: index_color == 2 ? kTitleTextColorActive : kTitleTextColor,
                   ),
                   // const SizedBox(height: 4),
                   Text(
-                    'Carrito',
+                    'Historial',
                     style: TextStyle(
                       color: index_color == 2 ? kTitleTextColorActive : kTitleTextColor,
                       fontSize: 11,
