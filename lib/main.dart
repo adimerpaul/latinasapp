@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:latinasapp/models/Book.dart';
 import 'package:latinasapp/pages/Menu.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+Future<void> main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(BookAdapter());
   runApp(const MyApp());
 }
 
