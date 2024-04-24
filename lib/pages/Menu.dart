@@ -28,6 +28,34 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kHeaderBackgroundColor,
+        leading: IconButton(
+          icon: Icon(Icons.menu, color: kHeaderTextColor),
+          onPressed: () {
+            // Navigator.push(context, MaterialPageRoute(builder: (context) => Search()));
+          },
+        ),
+        title: const Text(
+          'Latinas Editores Ltda. ',
+          style: TextStyle(
+            color: kHeaderTextColor,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search, color: kHeaderTextColor),
+            onPressed: () {
+              setState(() {
+                index_color = 1;
+              });
+              // Navigator.push(context, MaterialPageRoute(builder: (context) => Search()));
+            },
+          )
+        ],
+      ),
       backgroundColor: kBackgroundColor,
       body: pages[index_color],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
