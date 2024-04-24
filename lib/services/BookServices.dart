@@ -33,4 +33,13 @@ class BookService{
       return [];
     }
   }
+  Future bookAll() async {
+    var url = apiURL() + 'books/all';
+    var response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      return [];
+    }
+  }
 }

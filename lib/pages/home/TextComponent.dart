@@ -49,7 +49,7 @@ class TextComponent extends StatelessWidget {
                 return Stack(
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(right: 20),
+                      margin: const EdgeInsets.all(5),
                       height: 200,
                       width: 130,
                       decoration: BoxDecoration(
