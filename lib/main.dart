@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:latinasapp/models/Book.dart';
 import 'package:latinasapp/pages/Menu.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -19,9 +20,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Latinas',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        fontFamily: GoogleFonts.roboto().fontFamily,
+      ),
       home: Menu()
     );
   }

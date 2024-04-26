@@ -16,6 +16,7 @@ class BookDetailsScreen extends StatefulWidget {
 class _BookDetailsScreenState extends State<BookDetailsScreen> {
   final TextEditingController _quantityController = TextEditingController();
   int _selectedQuantity = 1;
+  // var booksBox;
 
   @override
   void dispose() {
@@ -27,7 +28,12 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
   void initState() {
     _quantityController.text = '1';
     super.initState();
+    // _openBox();
   }
+
+  // _openBox() async {
+  //   var booksBox = await Hive.openBox<Book>('book');
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -143,10 +149,18 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                             ),
                             ElevatedButton(
                               onPressed: () async {
-                                var bookBox = await Hive.openBox<Book>('book');
+                                print('id: ${widget.book['id']}');
+                                print('name: ${widget.book['name']}');
+                                print('author: ${widget.book['author']}');
+                                print('image: ${widget.book['image']}');
+                                print('description: ${widget.book['description']}');
+                                print('price: ${widget.book['price']}');
+                                print('quantity: $_selectedQuantity');
+                                print('total: ${double.parse(widget.book['price']) * _selectedQuantity}');
 
-                                bookBox.put(widget.book['id'], Book(
-                                  id: widget.book['id'],
+                                var booksBox = await Hive.openBox<Book>('books');
+                                booksBox.put(widget.book['id'].toString(), Book(
+                                  id: (widget.book['id']),
                                   name: widget.book['name'],
                                   author: widget.book['author'],
                                   image: widget.book['image'],
@@ -155,6 +169,16 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                                   quantity: int.parse(_quantityController.text),
                                   total: double.parse(widget.book['price']) * _selectedQuantity,
                                 ));
+                                // required this.id,
+                                // this.name,
+                                // this.author,
+                                // this.image,
+                                // this.description,
+                                // this.price,
+                                // this.quantity,
+                                // this.total,
+
+
 
                                 print('Cantidad seleccionada: $_selectedQuantity');
                                 showSuccessSnackBar(context, 'Libro agregado al carrito');

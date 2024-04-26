@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import '../../globals.dart' as globals;
+import '../../models/Book.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({super.key});
@@ -17,9 +18,12 @@ class _NotificationsState extends State<Notifications> {
     super.initState();
   }
   booksGet() async {
-    var booksBox = await Hive.openBox('book');
+    var booksBox = await Hive.openBox<Book>('books');
     setState(() {
       books = booksBox.values.toList();
+      books.forEach((element) {
+        print(element.name);
+      });
     });
   }
   @override
@@ -30,22 +34,39 @@ class _NotificationsState extends State<Notifications> {
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(books[index].name,
-              style: TextStyle(fontWeight: FontWeight.bold,
-              fontSize: 12,
-              color: Colors.black,
-              )
+                style: TextStyle(fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: Colors.black,
+                )
             ),
-            subtitle: Text(books[index].author,
-              style: TextStyle(
-                fontSize: 11,
-                color: Colors.black,
-              )
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(books[index].price.toString() + ' Bs',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                    )
+                ),
+                Row(
+                  children: [
+                    Text('Cantidad: ' + books[index].quantity.toString(),
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                        )
+                    ),
+                  ],
+                )
+              ],
             ),
             leading: Image.network(
               globals.API_BACK +
                   'uploads/thumb_' +
                   books[index].image,
-              fit: BoxFit.cover, // Opción para recortar la imagen
+              fit: BoxFit.cover,
               width: 50, // Ancho deseado de la imagen
               height: 100, // Alto deseado de la imagen
             ),
