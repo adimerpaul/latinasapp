@@ -145,15 +145,6 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                               onPressed: () async {
                                 var bookBox = await Hive.openBox<Book>('book');
 
-                                // int id;
-                                // String? name;
-                                // String? author;
-                                // String? image;
-                                // String? description;
-                                // double? price;
-                                // int? quantity;
-                                // double? total;
-
                                 bookBox.put(widget.book['id'], Book(
                                   id: widget.book['id'],
                                   name: widget.book['name'],

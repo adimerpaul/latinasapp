@@ -66,7 +66,7 @@ class TextComponent extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           image: DecorationImage(
-                            image: NetworkImage(globals.API_BACK + 'uploads/thumbnails/thumb_' + categori['books'][index]['image']),
+                            image: NetworkImage(globals.API_BACK + 'uploads/thumb_' + categori['books'][index]['image']),
                             fit: BoxFit.cover,
                           ),
                   

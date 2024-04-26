@@ -98,7 +98,7 @@ class _SearchState extends State<Search> {
                         ),
                         leading: Image.network(
                           globals.API_BACK +
-                              'uploads/thumbnails/thumb_' +
+                              'uploads/thumb_' +
                               bookAll[index]['image'],
                           fit: BoxFit.cover, // Opción para recortar la imagen
                           width: 50, // Ancho deseado de la imagen
